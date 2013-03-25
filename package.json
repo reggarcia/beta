@@ -1,0 +1,22 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "backbone": "0.9.x",
+    "requirejs": "2.1.x",
+    "dust": "0.3.x",
+    "dustjs-linkedin": "1.2.x",
+    "less": "1.3.x",
+    "less-middleware": "0.1.x",
+    "express": "3.1.x",
+    "consolidate": "0.8.x"
+  },
+  "main": "app",
+  "devDependencies": {
+    "mocha": "1.8.x" 
+  }
+}
