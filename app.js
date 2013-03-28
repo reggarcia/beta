@@ -5,7 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
+  
   , http = require('http')
   , path = require('path')
   , fs = require('fs')
@@ -16,7 +16,7 @@ var app = express();
 
 app.engine('dust', cons.dust);
 
-app.configure(function(){
+app.configure('development', function(){
   app.set('port', process.env.PORT || 8000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'dust');
@@ -35,16 +35,8 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', function(req, res) {
-  res.render('index', {
-    title: "testing out dust with express"
-  });
-});
-app.get('/:viewName', function(req,res) {
-  res.render(req.params.viewName, {
-    title: "random views"
-  });
-});
+app.get('/', routes.index);
+app.get('/contact', routes.contact);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Server running on port " + app.get('port'));
